@@ -1,0 +1,19 @@
+{
+  "name": "vitesse-uni-app-docs",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.41.4",
+    "eslint": "^8.49.0",
+    "vitepress": "1.0.0-rc.15"
+  }
+}

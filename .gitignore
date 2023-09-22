@@ -1,0 +1,14 @@
+.cache
+.DS_Store
+.idea
+*.log
+*.tgz
+coverage
+lib-cov
+logs
+temp
+.vite
+dist
+node_modules
+.vitepress/cache
+.vitepress/dist
