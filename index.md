@@ -3,16 +3,19 @@
 layout: home
 
 hero:
-  name: "vitesse-uni-app"
+  name: "Vitesse"
   text: "由 Vite & uni-app 驱动的跨端快速启动模板"
-  tagline: "告别 HBuilderX ，拥抱现代前端开发"
+  tagline: "背靠 Uni Helper 团队，告别 HBuilderX ，拥抱现代前端开发"
+  image:
+    src: /logo.svg
+    alt: Uni Helper
   actions:
     - theme: brand
       text: 快速开始
       link: /getting-started/installation
     - theme: alt
-      text: 在 GitHub 上查看
-      link: https://github.com/uni-helper/vitesse-uni-app
+      text: 查看演示
+      link: https://vitesse-uni-app.netlify.app/
 
 features:
   - title: 就是快

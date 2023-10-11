@@ -2,14 +2,15 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'vitesse-uni-app',
+  title: 'Vitesse uni-app',
   description: 'Vite & UniApp Powered Starter Template',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: '/logo.svg',
+    siteTitle: 'Vitesse',
     nav: [
       { text: '快速开始', link: '/getting-started/installation' },
       { text: '指南', link: '/guide/' },
-      { text: '演示', link: 'https://vitesse-uni-app.netlify.app/' },
     ],
 
     sidebar: {
@@ -68,5 +69,15 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/uni-helper/vitesse-uni-app' },
     ],
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2023-present Uni-Helper',
+    },
+
+    editLink: {
+      pattern: 'https://github.com/uni-helper/vitesse-uni-app-docs/edit/main/:path',
+      text: '在 GitHub 上编辑本页',
+    },
   },
 })
