@@ -23,7 +23,64 @@ uni.request({
 
 ## uni-network
 
-需要 @ModyQyW 来介绍一下~
+这是一个为 `uni-app` 打造的 [基于 Promise](https://javascript.info/promise-basics) 的 HTTP 客户端，灵感和代码绝大部分源于 `axios@0.27.2`。查看[文档](https://github.com/uni-helper/uni-network)了解更多。
+
+```ts
+import un from '@uni-helper/uni-network';
+
+// 发起一个 GET 请求特定 ID 的用户数据
+un.get('/user?ID=12345')
+  .then((response) => {
+    // 处理响应
+    console.log('response', response);
+  })
+  .catch((error) => {
+    // 处理错误
+    console.log('error', error);
+  })
+  .finally(() => {
+    // 总是会执行
+  });
+
+// 上述请求和以下等同
+un.get('/user', {
+  params: {
+    ID: 12345,
+  },
+})
+  .then((response) => {
+    console.log('response', response);
+  })
+  .catch((error) => {
+    console.log('error', error);
+  })
+  .finally(() => {
+    // 总是会执行
+  });
+
+// 支持 async/await
+async function getUser() {
+  try {
+    const response = await un.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 发起一个 POST 请求
+un.post('/user', {
+  firstName: 'Fred',
+  lastName: 'Flintstone',
+})
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(() => {});
+```
 
 ## axios
 
