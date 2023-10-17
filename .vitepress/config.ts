@@ -41,6 +41,7 @@ export default defineConfig({
                 },
                 {
                   text: 'UniApp 开发',
+                  link: '/guide/concepts/uniapp-development',
                 },
                 {
                   text: 'TypeScript',
