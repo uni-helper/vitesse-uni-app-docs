@@ -4,9 +4,19 @@
 
 ## UnoCSS
 
-默认情况下，我们使用了 `presetUno`, 在小程序下，我们使用了由 uni-helper 核心成员创建的 `unocss-applet` 的 `presetApplet` 来获得兼容性。
+默认情况下，我们使用了由 uni-helper 核心成员创建的 `unocss-uni`。它在底层使用 `unocss-applet` 来获得兼容性，并提供了按平台编写样式的能力。
 
+```html
+<view class='uni-h5:mx-auto'></view>
+<view class='uni-app:mx-auto'></view>
+<view class='uni-mp:mx-auto'></view>
+<view class='uni-weixin:mx-auto'></view>
+<view class='uni-mp-alipay:mx-auto'></view>
+```
+
+::: note
 你可以参考 UnoCSS [文档](https://unocss.dev/)，了解有关 UnoCSS 的使用方法。
+:::
 
 ## 预处理器
 
