@@ -10,7 +10,7 @@ export default defineConfig({
     siteTitle: 'Vitesse',
     nav: [
       { text: '快速开始', link: '/getting-started/installation' },
-      { text: '指南', link: '/guide/' },
+      { text: '指南', link: '/guide/concepts/auto-imports' },
     ],
 
     sidebar: {
@@ -37,6 +37,7 @@ export default defineConfig({
               items: [
                 {
                   text: '自动导入',
+                  link: '/guide/concepts/auto-imports',
                 },
                 {
                   text: 'UniApp 开发',
