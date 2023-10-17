@@ -4,7 +4,7 @@
 
 ## UnoCSS
 
-默认情况下，我们使用了由 uni-helper 核心成员创建的 `unocss-uni`。它在底层使用 `unocss-applet` 来获得兼容性，并提供了按平台编写样式的能力。
+默认情况下，我们使用了由 uni-helper 核心成员创建的 [`unocss-uni`](https://github.com/uni-helper/unocss-uni)。它在底层使用 [`unocss-applet`](https://github.com/unocss-applet/unocss-applet) 来获得兼容性，并提供了按平台编写样式的能力。
 
 ```html
 <view class='uni-h5:mx-auto'></view>
@@ -14,8 +14,8 @@
 <view class='uni-mp-alipay:mx-auto'></view>
 ```
 
-::: note
-你可以参考 UnoCSS [文档](https://unocss.dev/)，了解有关 UnoCSS 的使用方法。
+::: tip
+你可以参考 UnoCSS [文档](https://unocss.dev/)，了解更多有关 UnoCSS 的使用方法。
 :::
 
 ## 预处理器
