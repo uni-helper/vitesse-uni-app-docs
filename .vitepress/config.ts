@@ -79,22 +79,23 @@ export default defineConfig({
     logo: '/logo.svg',
     siteTitle: 'Vitesse',
     nav: [
-      { text: '快速开始', link: '/getting-started/installation' },
-      { text: '指南', link: '/guide/concepts/auto-imports' },
+      { text: '快速开始', link: '/getting-started/installation', activeMatch: '/getting-started' },
+      { text: '指南', link: '/guide/concepts/auto-imports', activeMatch: '/guide' },
     ],
 
     sidebar: {
       '/getting-started/': [
         {
           text: '快速开始',
+          base: '/getting-started/',
           items: [
-            { text: '介绍', link: '/getting-started/introduction' },
-            { text: '起步', link: '/getting-started/installation' },
-            { text: '视图', link: '/getting-started/views' },
-            { text: '样式', link: '/getting-started/styling' },
-            { text: '数据获取', link: '/getting-started/data-fetching' },
-            { text: '状态管理', link: '/getting-started/state-management' },
-            { text: '部署', link: '/getting-started/deployment' },
+            { text: '介绍', link: 'introduction' },
+            { text: '起步', link: 'installation' },
+            { text: '视图', link: 'views' },
+            { text: '样式', link: 'styling' },
+            { text: '数据获取', link: 'data-fetching' },
+            { text: '状态管理', link: 'state-management' },
+            { text: '部署', link: 'deployment' },
           ],
         },
       ],
@@ -104,18 +105,11 @@ export default defineConfig({
           items: [
             {
               text: '概念',
+              base: '/guide/concepts/',
               items: [
-                {
-                  text: '自动导入',
-                  link: '/guide/concepts/auto-imports',
-                },
-                {
-                  text: 'UniApp 开发',
-                  link: '/guide/concepts/uniapp-development',
-                },
-                {
-                  text: 'TypeScript',
-                },
+                { text: '自动导入', link: 'auto-imports' },
+                { text: 'UniApp 开发', link: 'uniapp-development' },
+                { text: 'TypeScript', link: 'typescript' },
               ],
             },
             {
