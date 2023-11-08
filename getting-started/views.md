@@ -4,7 +4,7 @@
 
 uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应用入口文件。但 `App.vue` 本身不是页面，这里不能编写视图元素，也就是没有 `<template>`。
 
-应用生命周期仅可在App.vue中监听，在页面监听无效。
+应用生命周期仅可在 `App.vue` 中监听，在页面监听无效。
 
 ::: tip 了解 uni-app 关于 `App.vue` 的更多信息
 <https://uniapp.dcloud.net.cn/collocation/App.html>

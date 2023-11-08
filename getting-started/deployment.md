@@ -35,10 +35,9 @@ pnpm build:mp-weixin
 
 ### 离线打包
 
-<https://nativesupport.dcloud.net.cn/AppDocs/usesdk/android.html>
+- [android](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/android.html)
+- [ios](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/ios.html)
 
-<https://nativesupport.dcloud.net.cn/AppDocs/usesdk/ios.html>
-
-### 安心打包
-
-TODO
+::: warning
+你任然可以使用 HBuilderX 提供的"安心"打包功能，当时由于这种方式强依赖 HBuilderX，故不做推荐
+:::

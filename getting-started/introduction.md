@@ -18,5 +18,5 @@ vitess-uni-app 由不同的开源包组成：
 - 核心：[@uni-helper](https://uni-helper.js.org/)
 - 引擎：[uni-app](https://github.com/dcloudio/uni-app)
 - 打包器：[Vite](http://vite.dev/)
-- CSS 样式：[UnoCSS](https://unocss.dev/) 和 `unocss-preset-uni`
-- 代码质量：ESLint 和 TypeScript
+- CSS 样式：[UnoCSS](https://unocss.dev/)
+- 代码质量：[ESLint](https://github.com/uni-helper/eslint-config) 和 [TypeScript](https://www.typescriptlang.org/)
