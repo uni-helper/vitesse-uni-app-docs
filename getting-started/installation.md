@@ -27,12 +27,16 @@
 
 ::: code-group
 
-```bash [npx]
-npx degit uni-helper/vitesse-uni-app <project-name>
+```bash [create-uni]
+pnpm create uni <project-name> -t vitesse
 ```
 
-```bash [pnpm]
+```bash [degit]
 pnpx degit uni-helper/vitesse-uni-app <project-name>
+```
+
+```bash [giget]
+pnpx giget gh:uni-helper/vitesse-uni-app <project-name>
 ```
 
 :::
