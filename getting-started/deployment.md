@@ -39,5 +39,5 @@ pnpm build:mp-weixin
 - [ios](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/ios.html)
 
 ::: warning
-你任然可以使用 HBuilderX 提供的"安心"打包功能，当时由于这种方式强依赖 HBuilderX，故不做推荐
+你任然可以使用 HBuilderX 提供的"安心"打包功能，但是由于这种方式强依赖 HBuilderX，故不做推荐
 :::
