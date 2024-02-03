@@ -12,8 +12,8 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.41.4",
-    "eslint": "^8.49.0",
-    "vitepress": "1.0.0-rc.15"
+    "@antfu/eslint-config": "^2.6.3",
+    "eslint": "^8.56.0",
+    "vitepress": "1.0.0-rc.41"
   }
 }
