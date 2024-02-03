@@ -13,14 +13,15 @@
 
 ### 前置依赖
 
-- **Node.js** - v16.10.0 或者更高
-- **文本编辑器** - 推荐使用 VS Code 并使用 Volar 插件
-- **终端** - 为了运行 `uni` 命令
+- **Node.js** - v18.19.0 或者更高
+- **文本编辑器** - 推荐使用 [VS Code](https://code.visualstudio.com/) 并使用 [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件
+- **终端** - 为了运行 `uni` 命令，Windows 推荐 Git Bash，Linux 和 macOS 推荐 zsh
 
 ::: details 最佳实践
 
-- **Node.js**: 总是使用偶数版本 (例如 18, 20)
-- **Volar**: 推荐启用接管模式 (takeover)
+- **Node.js**: 总是使用偶数版本 (即 [LTS 版本](https://nodejs.org/en/about/previous-releases)，例如 18, 20)
+- **Volar**: 推荐启用 [接管模式 takeover mode](https://cn.vuejs.org/guide/typescript/overview#volar-takeover-mode)
+
 :::
 
 打开终端，然后使用以下命令：

@@ -1,15 +1,16 @@
 # 介绍
 
-vitess-uni-app 是一个开源模板，具有直观且可扩展的方式来使用 `Vue` & `uni-app` 创建类型安全、高性能和生产级的跨端应用。
+vitess-uni-app 是一个基于 `Vue` 和 `uni-app` 的开源模板，采用直观且可扩展的方式创建类型安全、高性能和生产级的跨端应用。你可以直接开始编写 `.vue` 文件，而无需从头开始配置。
 
-你可以直接开始编写 `.vue` 文件，而无需从头开始配置。
-
-vitesse-uni-app 没有绑定编辑器，你可以使用任何方式任何编辑器进行开发。
+vitesse-uni-app 灵感源于 [vitesse](https://github.com/antfu/vitesse)。
 
 ## 为什么
 
-- 不要 HBuilderX
-- 拥抱 npm 生态
+`uni-app` 背后的公司 DCloudio 选择创建自己的生态，比如 HBuilderX、uni_modules 等。这部分工作对部分开发者来说意义非凡，他们可以轻松上手并享受社区提供的一切资源。
+
+但是，`uni-app` 社区生态远不如 npm 生态繁荣，我们常常需要求助于 npm 生态来实现部分需求，而 `uni-app` 的黑盒性阻碍了这一点。
+
+vitesse-uni-app 充分拥抱开放生态，比如 VS Code 和 npm，希望能带给你更好的体验。
 
 ## 主要依赖
 

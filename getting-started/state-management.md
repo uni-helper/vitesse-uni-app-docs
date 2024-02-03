@@ -1,8 +1,68 @@
 # 状态管理
 
-得益于 Composition API ，在 Vitesse 中做状态管理很容易。
+得益于组合式方法（Composition API），管理状态非常简单。
 
-## `ref`
+## Pinia
+
+[Pinia](https://pinia.vuejs.org/zh/) 是 `Vue` 官方最新推荐的状态管理库。
+
+```shell
+pnpm install pinia@2.0.36
+```
+
+安装依赖后，需要做基本设置。
+
+:::code-group
+
+```ts [src/main.ts]
+import { createSSRApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const pinia = createPinia()
+
+export function createApp() {
+  const app = createSSRApp(App).use(pinia);
+  return {
+    app,
+  }
+}
+```
+
+```ts [src/stores/counter.ts]
+import { defineStore } from 'pinia';
+
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+  return { count, increment }
+})
+```
+
+```vue [src/pages/index/index.vue]
+<script setup lang="ts">
+import { useCounterStore } from '../../stores/counter'
+
+const counterStore = useCounterStore()
+counterStore.count // 0
+counterStore.increment()
+counterStore.count // 1
+</script>
+```
+
+:::
+
+::: warning
+你可以在 [dcloudio/uni-app#4350](https://github.com/dcloudio/uni-app/issues/4350) 了解为什么要固定 pinia 版本号。
+:::
+
+## 简单状态管理
+
+你可以直接使用 `Vue` 提供的 `ref` 或 `reactive` 方法来做简单状态管理。
+
+### ref
 
 ::: code-group
 
@@ -40,7 +100,7 @@ const { globalCount, localCount, increment } = useCount()
 
 :::
 
-## `reactive`
+### reactive
 
 ::: code-group
 
@@ -65,12 +125,12 @@ export const countStore = reactive({
 :::
 
 ::: tip
-以上关于 `ref` 和 `reactive`的实例修改自 Vue 官方中文文档的[用响应式 API 做简单状态管理](https://cn.vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api) 部分。
+以上例子修改自 Vue 文档的 [用响应式 API 做简单状态管理](https://cn.vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api)。
 :::
 
 ## VueUse
 
-你也可以使用 vueUse 提供的 `createGlobalState` 进行状态管理，你还可以配合 `useStorage` 做数据持久。
+你也可以使用 VueUse 提供的 `createGlobalState` 进行状态管理，你还可以配合 `useStorage` 做数据持久。
 
 :::code-group
 
@@ -110,14 +170,6 @@ export const uniStorage = {
 
 :::
 
-## Pinia
-
-这个官方推荐的一个状态管理库。安装它，然后阅读[文档](https://pinia.vuejs.org/zh/)。
-
-```shell
-pnpm install pinia@2.0.36
-```
-
 ::: warning
-你可以在 [#4350](https://github.com/dcloudio/uni-app/issues/4350) 了解为什么要固定 pinia 版本号。
+如果你正在使用 VueUse v10 并遇到了问题，请查看 [dcloudio/uni-app#4604](https://github.com/dcloudio/uni-app/issues/4604) 获取解决方案。
 :::
