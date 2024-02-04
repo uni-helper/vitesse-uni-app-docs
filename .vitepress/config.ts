@@ -77,7 +77,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.svg',
-    siteTitle: 'Vitesse',
+    siteTitle: 'Vitesse Uni App',
     nav: [
       { text: '快速开始', link: '/getting-started/installation', activeMatch: '/getting-started' },
       { text: '指南', link: '/guide/concepts/auto-imports', activeMatch: '/guide' },
@@ -178,6 +178,30 @@ export default defineConfig({
     editLink: {
       pattern: 'https://github.com/uni-helper/vitesse-uni-app-docs/edit/main/:path',
       text: '在 GitHub 上编辑本页',
+    },
+
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          zh: {
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+              },
+              modal: {
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除查询条件',
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换'
+                }
+              }
+            }
+          }
+        }
+      }
     },
   },
 })

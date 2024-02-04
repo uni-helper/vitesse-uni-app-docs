@@ -2,17 +2,23 @@
 
 ## App.vue
 
-uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应用入口文件。但 `App.vue` 本身不是页面，这里不能编写视图元素，也就是没有 `<template>`。
+`App.vue` 是 uni-app 应用主组件和入口文件，所有页面都是在 `App.vue` 下进行切换的。
 
-应用生命周期仅可在 `App.vue` 中监听，在页面监听无效。
+`App.vue` 本身不是页面，这里不能编写视图元素，也就是不能使用 `<template>`。
 
-::: tip 了解 uni-app 关于 `App.vue` 的更多信息
+[应用生命周期](https://uniapp.dcloud.net.cn/collocation/App.html#applifecycle) 只能在 `App.vue` 中监听，在页面监听无效。
+
+::: tip 了解 `uni-app` 关于 `App.vue` 的更多信息
+
 <https://uniapp.dcloud.net.cn/collocation/App.html>
+
 :::
 
 ## Components 组件
 
-大多数组件都是用户界面的可重用部分，如按钮和菜单。你可以在 `src/components/` 目录中创建这些组件，它们将自动注册到全局，而无需显式导入它们。
+大多数组件都是用户界面的可重用部分，如按钮和菜单。
+
+得益于 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components)，组件将自动注册到全局，你不需要显式导入它们。只需要在 `src/components` 目录下创建组件，然后直接使用即可。
 
 :::code-group
 
@@ -39,7 +45,9 @@ uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应
 
 ## Pages 页面
 
-`src/pages/` 目录中的每个文件都代表着不同的路由。要创建新页面，只需要在这个目录里新增 `.vue` 文件即可。
+通过组合使用组件，我们可以得到展示给用户的页面。
+
+得益于 [@uni-helper/vite-plugin-uni-pages](https://github.com/uni-helper/vite-plugin-uni-pages)，约定式路由（文件路由）的实现轻而易举。`src/pages` 目录下的每个文件都代表着一个路由。要创建新页面，只需要在这个目录里新增 `.vue` 文件。
 
 :::code-group
 
@@ -64,17 +72,13 @@ uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应
 
 :::
 
-::: tip
-你可以在[这里](/guide/todo)了解有关页面的更多信息
-:::
+## Layouts 布局
 
-## Layotus 布局
+布局可以用来创建通用界面（如页眉和页脚显示）的包装器，不同的页面可能需要不同的布局。布局是使用 `Vue` 的插槽功能实现的。
 
-布局可以用来创建通用界面（如页眉和页脚显示）的包装器。布局是使用 Vue 的插槽功能实现的。
+得益于 [@uni-helper/vite-plugin-uni-layouts](https://github.com/uni-helper/vite-plugin-uni-layouts)，你可以轻松地切换不同的布局。
 
-`src/layouts/default.vue` 文件作为将作为默认路由。
-
-自定义布局可以使用 SFC 的 `route` 块来设置。
+`src/layouts/default.vue` 文件将作为默认布局。
 
 :::code-group
 
@@ -82,6 +86,7 @@ uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应
 <template>
   <div>
     <AppHeader />
+    <!-- src/pages/index.vue 和 src/pages/about.vue 内容展示 -->
     <slot />
     <AppFooter />
   </div>
@@ -109,6 +114,12 @@ uni-app 的主组件，所有页面都是在 App.vue 下进行切换的，是应
 
 :::
 
-::: tip
-你可以在[这里](/guide/todo)了解有关布局的更多信息
-:::
+在页面文件内设置 `route` 代码块可以指定自定义布局。
+
+```vue [src/pages/index.vue]
+<route lang="json">
+{
+  "layout": "custom"
+}
+</route>
+```
