@@ -2,11 +2,20 @@
 
 ## App.vue
 
-`App.vue` 是 uni-app 应用主组件和入口文件，所有页面都是在 `App.vue` 下进行切换的。
+`App.vue` 是 uni-app 的应用主组件和入口文件，所有页面都在它下面切换。
 
-`App.vue` 本身不是页面，这里不能编写视图元素，也就是不能使用 `<template>`。
+`App.vue` 本身不是页面，这里不能写视图元素，也就是不能用 `<template>`。
 
-[应用生命周期](https://uniapp.dcloud.net.cn/collocation/App.html#applifecycle) 只能在 `App.vue` 中监听，在页面监听无效。
+[应用生命周期](https://uniapp.dcloud.net.cn/collocation/App.html#applifecycle) 只能在 `App.vue` 里监听，在页面里监听无效。
+
+```vue
+<!-- src/App.vue -->
+<script setup lang="ts">
+import { onLaunch } from '@dcloudio/uni-app'
+
+onLaunch(() => {})
+</script>
+```
 
 ::: tip 了解 `uni-app` 关于 `App.vue` 的更多信息
 
@@ -14,112 +23,125 @@
 
 :::
 
-## Components 组件
+## 组件
 
-大多数组件都是用户界面的可重用部分，如按钮和菜单。
+组件放在 `src/components`，导入后使用。模板不再使用 `vite-plugin-uni-components`，组件不会自动注册。
 
-得益于 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components)，组件将自动注册到全局，你不需要显式导入它们。只需要在 `src/components` 目录下创建组件，然后直接使用即可。
+```vue
+<!-- src/pages/hi.vue -->
+<script setup lang="ts">
+import HiCounter from '@/components/hi-counter.vue'
+</script>
 
-:::code-group
-
-```vue [src/pages/index.vue]
 <template>
-  <div>
-    <h1>欢迎使用 vitess-uni-app </h1>
-    <AppAlert>
-      这个组件会自动导入
-    </AppAlert>
-  </div>
+  <HiCounter />
 </template>
 ```
 
-```vue [src/components/AppAlert.vue]
-<template>
-  <span>
-    <slot />
-  </span>
-</template>
-```
+`@/` 指向 `src`，配置在 `tsconfig.json` 的 `paths` 里。
 
+::: warning
+这里的组件是普通 Vue 组件。`uni-app` 自带的 `easycom` 只扫描 `components/组件名/组件名.vue` 这种两级目录，`src/components/hi-counter.vue` 不符合规则，不导入就不会生效。
 :::
 
-## Pages 页面
+## 页面
 
-通过组合使用组件，我们可以得到展示给用户的页面。
+`src/pages` 下的每个 `.vue` 文件就是一个路由。新建页面只要在这个目录里加文件。
 
-得益于 [@uni-helper/vite-plugin-uni-pages](https://github.com/uni-helper/vite-plugin-uni-pages)，约定式路由（文件路由）的实现轻而易举。`src/pages` 目录下的每个文件都代表着一个路由。要创建新页面，只需要在这个目录里新增 `.vue` 文件。
+页面配置写在 `definePage` 里，插件扫描时读取它，编译时把这次调用从产物里删掉。
 
-:::code-group
-
-```vue [src/pages/index.vue]
-<template>
-  <div>
-    <h1>欢迎使用 vitess-uni-app </h1>
-    <AppAlert>
-      这个组件会自动导入
-    </AppAlert>
-  </div>
-</template>
+```vue
+<!-- src/pages/hi.vue -->
+<script setup lang="ts">
+definePage({
+  layout: 'home',
+  middleware: ['hiGuard'],
+  style: {
+    navigationBarTitleText: 'Hi',
+  },
+})
+</script>
 ```
 
-```vue [src/pages/about.vue]
-<template>
-  <section>
-    <p>通过 `/pages/about` 来访问这个页面</p>
-  </section>
-</template>
-```
+`definePage` 的字段和 `pages.json` 的页面条目一致，另外支持：
 
+| 字段 | 说明 |
+| --- | --- |
+| `type` | `'home'` 标记首页，`'page'` 是普通页面 |
+| `layout` | 使用的布局，见下文 |
+| `middleware` | 页面级中间件，见[路由中间件](../guide/concepts/middleware) |
+| `tabBar` | 生成 `tabBar.list` 条目 |
+| `style` | 页面样式 |
+
+需要按平台给不同配置时，`definePage` 可以传函数，见[按平台开发](../guide/concepts/platform)。
+
+::: warning
+`vite-plugin-uni-pages` 从 0.4 起移除了 `<route>` 自定义块。写在 `<route>` 里的配置不会进 `pages.json`，必须改用 `definePage`。
 :::
 
-## Layouts 布局
+## 布局
 
-布局可以用来创建通用界面（如页眉和页脚显示）的包装器，不同的页面可能需要不同的布局。布局是使用 `Vue` 的插槽功能实现的。
+布局用来包住页面，放页头、页脚和公共样式。布局是普通 Vue 组件，用插槽接收页面内容。
 
-得益于 [@uni-helper/vite-plugin-uni-layouts](https://github.com/uni-helper/vite-plugin-uni-layouts)，你可以轻松地切换不同的布局。
+`src/layouts/default.vue` 是所有页面的默认布局。
 
-`src/layouts/default.vue` 文件将作为默认布局。
-
-:::code-group
-
-```vue [src/layouts/default.vue]
-<template>
-  <div>
-    <AppHeader />
-    <!-- src/pages/index.vue 和 src/pages/about.vue 内容展示 -->
-    <slot />
-    <AppFooter />
-  </div>
-</template>
-```
-
-```vue [src/pages/index.vue]
-<template>
-  <div>
-    <h1>欢迎使用 vitess-uni-app </h1>
-    <AppAlert>
-      这个组件会自动导入
-    </AppAlert>
-  </div>
-</template>
-```
-
-```vue [src/pages/about.vue]
-<template>
-  <section>
-    <p>通过 `/pages/about` 来访问这个页面</p>
-  </section>
-</template>
-```
-
-:::
-
-在页面文件内设置 `route` 代码块可以指定自定义布局。
-
-```vue [src/pages/index.vue]
-<route lang="json">
-{
-  "layout": "custom"
+```vue
+<!-- src/layouts/home.vue -->
+<script setup lang="ts">
+function toast(message: string) {
+  uni.showToast({ icon: 'none', title: message })
 }
-</route>
+
+defineExpose({ toast })
+</script>
+
+<template>
+  <view class="px-10 py-20 text-center">
+    <slot />
+    <view class="mt-5 text-sm opacity-25">
+      [Home Layout]
+    </view>
+  </view>
+</template>
+```
+
+页面在 `definePage` 里指定布局：
+
+```vue
+<script setup lang="ts">
+definePage({ layout: 'home' })
+</script>
+```
+
+- 写 `layout: false` 不套任何布局。
+- 布局名由文件路径推导，`src/layouts/home.vue` 对应 `home`，`src/layouts/blog/posts.vue` 对应 `blogPosts`。
+- 布局名写错时只有一个页面不套布局，终端会给出警告。
+
+### 调用布局里的方法
+
+布局用 `defineExpose` 暴露方法，页面用 `useUhUniLayoutRef` 拿到布局实例：
+
+```vue
+<!-- src/pages/hi.vue -->
+<script setup lang="ts">
+import { useUhUniLayoutRef } from 'virtual:uni-layouts'
+
+const uniLayout = useUhUniLayoutRef<{ toast: (message: string) => void }>()
+
+function handleToast() {
+  uniLayout.value?.toast('Hi')
+}
+</script>
+```
+
+实例要等布局挂载后才有值，在 `onLoad` 里读会得到 `null`，请在 `onMounted`、`onReady` 里读，或者用 `watch`。
+
+完整说明见[插件文档](https://github.com/uni-helper/vite-plugin-uni-layouts)。
+
+## 静态资源
+
+图片等静态资源放在 `src/static`，构建时原样拷贝，引用路径写绝对路径：
+
+```vue
+<image src="/static/logo.svg" />
 ```

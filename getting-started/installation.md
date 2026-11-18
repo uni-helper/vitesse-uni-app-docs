@@ -1,10 +1,8 @@
 # 起步
 
-你可以直接使用在线编辑器快速试用，或者使用终端在本地开始使用。
+你可以用在线编辑器快速试用，也可以用终端在本地开始。
 
 ## 在线试用
-
-您可以使用在线编辑器在浏览器中开始试用：
 
 - [StackBlitz](https://stackblitz.com/github/uni-helper/vitesse-uni-app)
 - [GitHub Template](https://github.com/uni-helper/vitesse-uni-app/generate)
@@ -13,23 +11,19 @@
 
 ### 前置依赖
 
-- **Node.js** - v18.19.0 或者更高
-- **文本编辑器** - 推荐使用 [VS Code](https://code.visualstudio.com/) 并使用 [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件
-- **终端** - 为了运行 `uni` 命令，Windows 推荐 Git Bash，Linux 和 macOS 推荐 zsh
+- **Node.js** — [LTS 版本](https://nodejs.org/en/about/previous-releases)，22 或更高。模板的 `.node-version` 是 26，CI 覆盖 22、24、26。
+- **pnpm** — 模板用 pnpm，版本写在 `package.json` 的 `packageManager` 字段。
+- **文本编辑器** — 推荐 VS Code 加 Vue 官方插件。仓库里的 `.vscode/extensions.json` 列出了推荐插件，打开项目时 VS Code 会提示安装。
+- **终端** — 运行 `pnpm` 命令。Windows 建议用 Git Bash / Powershell。
 
-::: details 最佳实践
+推荐用 [vite-plus](https://viteplus.dev/) 一站式同时管理 Node.js 和 pnpm。
 
-- **Node.js**: 总是使用偶数版本 (即 [LTS 版本](https://nodejs.org/en/about/previous-releases)，例如 18, 20)
-- **Volar**: 推荐启用 [接管模式 takeover mode](https://cn.vuejs.org/guide/typescript/overview#volar-takeover-mode)
-
-:::
-
-打开终端，然后使用以下命令：
+### 创建项目
 
 ::: code-group
 
 ```bash [create-uni]
-pnpm create uni <project-name> -t vitesse
+pnpm create uni@latest <project-name> -t vitesse
 ```
 
 ```bash [degit]
@@ -42,81 +36,61 @@ pnpx giget gh:uni-helper/vitesse-uni-app <project-name>
 
 :::
 
-在 VS Code 中打开项目文件夹：
+在 VS Code 中打开项目：
 
 ```bash
 code <project-name>
 ```
 
-安装依赖：
+### 安装依赖
 
-::: code-group
-
-```bash [pnpm]
+```bash
 pnpm install
 ```
 
-```bash [yarn]
-npx rimraf pnpm-lock.yaml
-yarn install
-```
-
-```bash [npm]
-npx rimraf pnpm-lock.yaml
-npm install
-```
-
-```bash [bun]
-npx rimraf pnpm-lock.yaml
-bun install
-```
-
+::: tip
+模板按 pnpm 配置：`pnpm-lock.yaml` 锁版本，`pnpm-workspace.yaml` 里放 pnpm 自身的设置。换成 npm、yarn 或 bun 时要自己调整依赖和构建脚本白名单。
 :::
 
 ## 开发
 
-你可以使用 `dev` 命令直接启动 `h5` 模式的开发服务器
+`dev` 启动默认平台的开发服务器，默认平台是 `h5`。
 
-::: code-group
-
-```bash [pnpm]
+```bash
 pnpm dev
 ```
 
-```bash [yarn]
-yarn dev
-```
-
-```bash [npm]
-npm dev
-```
-
-```bash [bun]
-bun dev
-```
-
-:::
+打开终端打印的地址即可预览。
 
 ### 跨端开发
 
-同样使用 `dev` 命令，不同的是你需要使用冒号并跟着你要开发的平台标识。
+在 `dev` 后面加平台名：
 
-::: code-group
-
-```bash [pnpm]
-pnpm dev:<platform>
+```bash
+pnpm dev wx          # 微信小程序
+pnpm dev mp-alipay   # 支付宝小程序
+pnpm dev app        # App
 ```
 
-```bash [yarn]
-yarn dev:<platform>
+`wx` 是 `mp-weixin` 的别名，配置在 `unh.config.ts`。平台全名可以用 `pnpm exec unh platform` 查看，完整说明见[命令行与 unh](../guide/concepts/cli)。
+
+微信小程序的产物在 `dist/dev/mp-weixin`，用微信开发者工具导入这个目录。
+
+## 常用命令
+
+```bash
+pnpm dev             # 开发
+pnpm build           # 构建默认平台
+pnpm build wx        # 构建微信小程序
+pnpm typecheck       # 类型检查
+pnpm lint            # 代码检查
+pnpm lint:fix        # 代码检查并修复
+pnpm test            # 测试
+pnpm about           # 打印依赖和环境信息
 ```
 
-```bash [npm]
-npm dev:<platform>
-```
+## 下一步
 
-```bash [bun]
-bun dev:<platform>
-```
-
-:::
+- [视图](./views) — 页面、组件和布局
+- [命令行与 unh](../guide/concepts/cli) — 命令背后做了什么
+- [目录结构](../guide/directory-structure) — 每个文件的作用

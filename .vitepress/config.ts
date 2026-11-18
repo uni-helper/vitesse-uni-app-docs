@@ -16,8 +16,14 @@ export default defineConfig({
           'Vite & uni-app Powered Starter Template',
       },
     ],
-    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:site', content: '@uni-helper' }],
+    [
+      'meta',
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
+    [
+      'meta',
+      { name: 'twitter:site', content: '@uni-helper' },
+    ],
     [
       'meta',
       {
@@ -42,10 +48,22 @@ export default defineConfig({
           'Vite & uni-app Powered Starter Template',
       },
     ],
-    ['meta', { property: 'og:image:width', content: '1200' }],
-    ['meta', { property: 'og:image:height', content: '600' }],
-    ['meta', { property: 'og:site_name', content: 'GitHub' }],
-    ['meta', { property: 'og:type', content: 'object' }],
+    [
+      'meta',
+      { property: 'og:image:width', content: '1200' },
+    ],
+    [
+      'meta',
+      { property: 'og:image:height', content: '600' },
+    ],
+    [
+      'meta',
+      { property: 'og:site_name', content: 'GitHub' },
+    ],
+    [
+      'meta',
+      { property: 'og:type', content: 'object' },
+    ],
     [
       'meta',
       {
@@ -80,7 +98,7 @@ export default defineConfig({
     siteTitle: 'Vitesse Uni App',
     nav: [
       { text: '快速开始', link: '/getting-started/installation', activeMatch: '/getting-started' },
-      { text: '指南', link: '/guide/concepts/auto-imports', activeMatch: '/guide' },
+      { text: '指南', link: '/guide/', activeMatch: '/guide' },
     ],
 
     sidebar: {
@@ -103,64 +121,20 @@ export default defineConfig({
         {
           text: '指南',
           items: [
-            {
-              text: '概念',
-              base: '/guide/concepts/',
-              items: [
-                { text: '自动导入', link: 'auto-imports' },
-                { text: 'uni-app 开发', link: 'uniapp-development' },
-                { text: 'TypeScript', link: 'typescript' },
-              ],
-            },
-            {
-              text: '目录结构',
-              base: '/guide/directory-structure/',
-              items: [
-                { text: '.github', link: 'github' },
-                { text: '.vscode', link: 'vscode' },
-                { text: 'dist', link: 'dist' },
-                { text: 'node_modules', link: 'node_modules' },
-                {
-                  text: 'src',
-                  base: '/guide/directory-structure/src/',
-                  collapsed: true,
-                  items: [
-                    { text: 'components', link: 'components' },
-                    { text: 'composables', link: 'composables' },
-                    { text: 'layouts', link: 'layouts' },
-                    { text: 'pages', link: 'pages' },
-                    { text: 'static', link: 'static' },
-                    { text: 'App.vue', link: 'app-vue' },
-                    { text: 'auto-imports.d.ts', link: 'auto-imports-d-ts' },
-                    { text: 'components.d.ts', link: 'components-d-ts' },
-                    { text: 'env.d.ts', link: 'env-d-ts' },
-                    { text: 'main.ts', link: 'main-ts' },
-                    { text: 'manifest.json', link: 'manifest-json' },
-                    { text: 'pages.json', link: 'pages-json' },
-                    { text: 'shims.d.ts', link: 'shims-d-ts' },
-                    { text: 'theme.json', link: 'theme-json' },
-                    { text: 'uni-pages.d.ts', link: 'uni-pages-d-ts' },
-                    { text: 'uni.scss', link: 'uni-scss' },
-                  ],
-                },
-                { text: '.editorconfig', link: 'editorconfig' },
-                { text: '.gitignore', link: 'gitignore' },
-                { text: '.npmrc', link: 'npmrc' },
-                { text: 'LICENSE', link: 'license' },
-                { text: 'README.md', link: 'readme-md' },
-                { text: 'eslint.config.js', link: 'eslint-config-js' },
-                { text: 'index.html', link: 'index-html' },
-                { text: 'manifest.config.ts', link: 'manifest-config-ts' },
-                { text: 'package.json', link: 'package-json' },
-                { text: 'pages.config.ts', link: 'pages-config-ts' },
-                { text: 'pnpm-lock.yaml', link: 'pnpm-lock-yaml' },
-                { text: 'renovate.json', link: 'renovate-json' },
-                { text: 'tsconfig.json', link: 'tsconfig-json' },
-                { text: 'uno.config.ts', link: 'uno-config-ts' },
-                { text: 'vite.config.ts', link: 'vite-config-ts' },
-                { text: 'volar.config.js', link: 'volar-config-js' },
-              ],
-            },
+            { text: '概览', link: '/guide/' },
+            { text: '目录结构', link: '/guide/directory-structure' },
+          ],
+        },
+        {
+          text: '概念',
+          base: '/guide/concepts/',
+          items: [
+            { text: '命令行与 unh', link: 'cli' },
+            { text: 'uni-app 开发', link: 'uniapp-development' },
+            { text: 'TypeScript', link: 'typescript' },
+            { text: '路由中间件', link: 'middleware' },
+            { text: '按平台开发', link: 'platform' },
+            { text: '测试', link: 'testing' },
           ],
         },
       ],
@@ -188,20 +162,20 @@ export default defineConfig({
             translations: {
               button: {
                 buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档'
+                buttonAriaLabel: '搜索文档',
               },
               modal: {
                 noResultsText: '无法找到相关结果',
                 resetButtonTitle: '清除查询条件',
                 footer: {
                   selectText: '选择',
-                  navigateText: '切换'
-                }
-              }
-            }
-          }
-        }
-      }
+                  navigateText: '切换',
+                },
+              },
+            },
+          },
+        },
+      },
     },
   },
 })
