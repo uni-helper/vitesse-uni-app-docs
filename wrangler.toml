@@ -1,0 +1,6 @@
+name = "vitesse-uni-app"
+pages_build_output_dir = ".vitepress/dist"
+compatibility_date = "2026-10-01"
+
+[env.production]
+compatibility_date = "2026-10-01"
