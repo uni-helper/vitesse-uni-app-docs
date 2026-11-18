@@ -1,5 +1,5 @@
 minimumReleaseAgeExcludePrune: true
-trustPolicy: no-downgrade
+trustPolicy: off
 shellEmulator: true
 
 allowBuilds:
