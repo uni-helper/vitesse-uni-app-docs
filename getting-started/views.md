@@ -25,7 +25,7 @@ onLaunch(() => {})
 
 ## 组件
 
-组件放在 `src/components`，导入后使用。模板不再使用 `vite-plugin-uni-components`，组件不会自动注册。
+组件放在 `src/components`，导入后使用。模板没有启用 `vite-plugin-uni-components`，组件不会自动注册。想省掉手写导入，见[自动导入](../guide/concepts/auto-import)。
 
 ```vue
 <!-- src/pages/hi.vue -->

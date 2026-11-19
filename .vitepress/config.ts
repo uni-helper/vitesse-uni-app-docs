@@ -132,6 +132,7 @@ export default defineConfig({
             { text: '命令行与 unh', link: 'cli' },
             { text: 'uni-app 开发', link: 'uniapp-development' },
             { text: 'TypeScript', link: 'typescript' },
+            { text: '自动导入', link: 'auto-import' },
             { text: '路由中间件', link: 'middleware' },
             { text: '按平台开发', link: 'platform' },
             { text: '测试', link: 'testing' },
